@@ -3,11 +3,11 @@ version: 0
 author: Javier Luna Molina
 main: com.thequietdeveloper.mc.coords.Coords
 website: mc.thequietdeveloper.com
-api-version: 1.17
+api-version: 1.18
 commands:
   coords:
     description: Add and delete your coordinates
-    usage: Use /coords list to list all coordinates, /coords add x y z description to add a coordinate
+    usage: Use /coords list to list all coordinates, /coords add name to add a coordinate
     permission: coord.coords
 permissions:
   coord.coords:

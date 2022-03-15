@@ -1,40 +1,50 @@
 package com.thequietdeveloper.mc.coords.domain.models;
 
-import java.util.Optional;
+
+import org.bukkit.World;
 
 public class Coordinate {
-    private final Integer x;
-    private final Integer z;
-    private final Optional<Integer> y;
-    private final String description;
+    private final Integer x, y, z;
+    private final String name;
+    private final Visibility visibility;
+    private final World.Environment environment;
+    private final String ownerUUID;
 
-    public Coordinate(Integer x, Integer z, String description) {
+    public Coordinate(Integer x, Integer y, Integer z, String name, Visibility visibility, World.Environment environment, String ownerUUID) {
         this.x = x;
+        this.y = y;
         this.z = z;
-        this.y = Optional.empty();
-        this.description = description;
-    }
-
-    public Coordinate(Integer x, Integer y, Integer z, String description) {
-        this.x = x;
-        this.y = Optional.of(y);
-        this.z = z;
-        this.description = description;
+        this.name = name;
+        this.visibility = visibility;
+        this.environment = environment;
+        this.ownerUUID = ownerUUID;
     }
 
     public Integer getX() {
         return x;
     }
 
+    public Integer getY() {
+        return y;
+    }
+
     public Integer getZ() {
         return z;
     }
 
-    public Optional<Integer> getY() {
-        return y;
+    public String getName() {
+        return name;
     }
 
-    public String getDescription() {
-        return description;
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public World.Environment getEnvironment() {
+        return environment;
+    }
+
+    public String getOwnerUUID() {
+        return ownerUUID;
     }
 }
