@@ -5,7 +5,6 @@ import com.thequietdeveloper.mc.coords.domain.ports.CoordsCommand;
 import org.bukkit.entity.Player;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GetCoordinateCommand implements CoordsCommand {
     CoordsService service;
@@ -33,6 +32,6 @@ public class GetCoordinateCommand implements CoordsCommand {
             return List.of();
         }
         var currentName = String.join(" ", args);
-        return coordinateNames.stream().filter(coordinateName -> coordinateName.startsWith(currentName)).collect(Collectors.toList());
+        return coordinateNames.stream().filter(coordinateName -> coordinateName.startsWith(currentName)).toList();
     }
 }

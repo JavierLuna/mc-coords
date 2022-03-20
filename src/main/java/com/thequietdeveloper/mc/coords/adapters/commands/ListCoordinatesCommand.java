@@ -45,8 +45,6 @@ public class ListCoordinatesCommand implements CoordsCommand {
 
     @Override
     public List<String> tabComplete(Player player, List<String> args) {
-        Bukkit.getLogger().info(String.join(",", args));
-        Bukkit.getLogger().info(args.isEmpty() + "");
         var allOptions = Arrays.asList("all", "nether", "end", "world", "custom");
 
         if (args.isEmpty()) {

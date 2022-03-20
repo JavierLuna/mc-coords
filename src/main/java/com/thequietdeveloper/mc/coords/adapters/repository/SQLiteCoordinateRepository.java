@@ -23,9 +23,8 @@ public class SQLiteCoordinateRepository implements CoordinateRepository {
 
     private static final String SQL_INSERT_COORDINATE = "INSERT INTO coordinates(x,y,z,name,visibility,environment,ownerUUID) VALUES(?,?,?,?,?,?,?)";
     private static final String SQL_SELECT_ALL_COORDINATES = "SELECT x, y, z, name, visibility, environment, ownerUUID FROM coordinates " +
-            "WHERE visibility = ? OR (visibility = ? AND ownerUUID = ?) " +
-            "GROUP BY environment " +
-            "ORDER BY name DESC";
+            "WHERE (visibility = ? OR (visibility = ? AND ownerUUID = ?)) " +
+            "ORDER BY environment, name DESC";
     private static final String SQL_SELECT_ENVIRONMENT_COORDINATES = "SELECT x, y, z, name, visibility, environment, ownerUUID FROM coordinates " +
             "WHERE environment = ? AND (visibility = ? OR (visibility = ? AND ownerUUID = ?)) " +
             "ORDER BY name DESC";
@@ -151,6 +150,7 @@ public class SQLiteCoordinateRepository implements CoordinateRepository {
                 stmt.setString(2, Visibility.GLOBAL.name());
                 stmt.setString(3, Visibility.PRIVATE.name());
                 stmt.setString(4, player.getUniqueId().toString());
+
                 var rs = stmt.executeQuery();
                 while (rs.next()) {
                     var x = rs.getInt(1);
